@@ -1,0 +1,26 @@
+{
+  "kline":
+  {
+    "columns": ["time", "open", "close", "high", "low", "volume", "turnover"],
+    "enum":
+    {
+      "time" : 0,
+      "open" : 1,
+      "close": 2,
+      "high": 3,
+      "low": 4,
+      "volume": 5,
+      "turnover": 6
+    },
+    "data_types":
+    {
+      "time" : "int",
+      "open" :  "float",
+      "close":  "float",
+      "high":  "float",
+      "low": "float",
+      "volume":  "float",
+      "turnover": "float"
+    }
+  }
+}

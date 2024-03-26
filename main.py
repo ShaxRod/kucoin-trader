@@ -1,16 +1,38 @@
-# This is a sample Python script.
+import pandas as pd
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+import modules.general as gen
+from modules.kucoin_helpers import KC
+import datetime
+import time
+from matplotlib import pyplot as plt
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    api_params = gen.read_json('authentication/shax_kucoin.json')
+    df_params = gen.read_json('paramaters/pandas_dataframes.json')
+    kc = KC(api_params)
+
+    # Example Usage
+    symbol_btc = 'BTC-USDT'
+    symbol_sol = 'SOL-USDT'
+
+    now = datetime.datetime.now()
+    delta_t = now - datetime.timedelta(days=30)
+
+    data_btc = kc.historical_data_frame(symbol_btc,
+                                        '1min',
+                                        gen.to_unix_time(delta_t),
+                                        gen.to_unix_time(now),
+                                        df_params
+                                        )
+
+    data_sol = kc.historical_data_frame(symbol_sol,
+                                        '1min',
+                                        gen.to_unix_time(delta_t),
+                                        gen.to_unix_time(now),
+                                        df_params)
+
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
