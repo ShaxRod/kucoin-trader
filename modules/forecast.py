@@ -17,7 +17,6 @@ class Forecast:
         self.time = time_step
 
         self.lstm = None
-        self.arima = None
 
     def create_dataset(self):
         scaler = MinMaxScaler(feature_range=(0, 1))
@@ -49,16 +48,7 @@ class Forecast:
 
         self.lstm = model
 
-    def arima(self):
-        model = ARIMA(self.asset, order=(self.time, 1, 0))  # These parameters can be optimized
-        model_fit = model.fit()
 
-        # Summary of the model
-        print(model_fit.summary())
-
-        # Forecast
-        forecast = model_fit.forecast(steps=self.time)  # Forecasting next 5 days
-        print(forecast)
 
 
 
