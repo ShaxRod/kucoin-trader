@@ -13,7 +13,7 @@ from modules.forecast import Forecast
 api_params = gen.read_json('authentication/shax_kucoin.json')
 df_params = gen.read_json('paramaters/pandas_dataframes.json')
 portfolio_params = gen.read_json('paramaters/portfolio.json')
-step = 1440
+step = 14400
 
 def portfolio_optimisation():
     portfolio = Optimise(portfolio_params=portfolio_params, api_params=api_params, df_params=df_params)
